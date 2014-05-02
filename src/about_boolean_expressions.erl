@@ -12,36 +12,36 @@
         ]).
 
 or_operator() ->
-    __ =:= true or false.
+    true =:= true or false.
 
 and_operator() ->
-    __ =:= true and false.
+    false =:= true and false.
 
 xor_operator() ->
-    __ =:= true xor false.
+    true =:= true xor false.
 
 not_operator() ->
-    __ =:= not true.
+    false =:= not true.
 
 being_strict() ->
     StrictlyDefined = (42 =:= 42.0),
-    __ =:= StrictlyDefined.
+    false =:= StrictlyDefined.
 
 being_not_so_strict() ->
     NotSoStrictlyDefined = (42 == 42.0),
-    __ =:= NotSoStrictlyDefined.
+    true =:= NotSoStrictlyDefined.
 
 special_operators_evaluate_only_what_is_necessary() ->
     ShortCircuit = (true andalso false),
-    __ =:= ShortCircuit.
+    false =:= ShortCircuit.
 
 this_applies_to_or_as_well() ->
     ShortCircuit = (false orelse true),
-    __ =:= ShortCircuit.
+    true =:= ShortCircuit.
 
 make_de_morgan_proud() ->
-    ((not true) orelse (__)) =:= (not (false andalso true)).
+    ((not true) orelse (not false)) =:= (not (false andalso true)).
 
 syntax_you_might_not_expect() ->
-    __ =:= (1 =< 2) and (3 /= 4).
+    true =:= (1 =< 2) and (3 /= 4).
 
