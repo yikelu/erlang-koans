@@ -8,31 +8,31 @@
         ]).
 
 map_a_list_to_a_new_list() ->
-    __ =:= lists:map(fun(Item) -> Item * 2 end, [1, 2, 3]).
+    [2, 4, 6] =:= lists:map(fun(Item) -> Item * 2 end, [1, 2, 3]).
 
 fold_an_answer_from_the_left() ->
-    __ =:= lists:foldl(
+    "hello erlang koans" =:= lists:foldl(
              fun(Item, Accumulation) ->
                  string:join([Accumulation, Item], " ")
              end, "hello", ["erlang", "koans"]).
 
 or_from_the_right() ->
-  __ =:= lists:foldr(
+  "hello koans erlang" =:= lists:foldr(
            fun(Item, Accumulation) ->
                string:join([Accumulation, Item], " ")
            end, "hello", ["erlang", "koans"]).
 
 filter_the_appropriate_values() ->
-    __ =:= lists:filter(fun(Item) -> Item rem 2 =:= 0 end, [2, 3, 4]).
+    [2, 4] =:= lists:filter(fun(Item) -> Item rem 2 =:= 0 end, [2, 3, 4]).
 
 merging_two_dicts() ->
     Dict1 = dict:store(key, first_value, dict:new()),
     Dict2 = dict:store(key, second_value, dict:new()),
     NewDict = dict:merge(fun(Key, Value1, Value2) -> [Value1, Value2] end, Dict1, Dict2),
-    dict:store(key, __, dict:new()) =:= NewDict.
+    dict:store(key, [first_value, second_value], dict:new()) =:= NewDict.
 
 function_passed_to_a_function() ->
-    YourListReversalFunction = __,
+    YourListReversalFunction = fun lists:reverse/1,
     mango =:= first_of_applied_function(YourListReversalFunction).
 
 first_of_applied_function(YourFunction) when is_function(YourFunction) ->
