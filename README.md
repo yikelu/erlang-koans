@@ -1,3 +1,6 @@
+## NOTE
+These are MY solutions to these koans.
+
 ## Erlang Koans
 Inspired by <a href="http://rubykoans.com/">the ruby koans</a>.
 
